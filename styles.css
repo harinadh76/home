@@ -1,0 +1,280 @@
+:root {
+    /* Light Theme Palette - Final Orange */
+    --bg-color: #FFD8A8;
+    /* Richer light orange */
+    --glass-panel-bg: rgba(255, 255, 255, 0.45);
+    --glass-border: rgba(255, 255, 255, 0.6);
+    --glass-shadow: 0 12px 40px rgba(255, 100, 0, 0.2);
+    /* Deep red-orange shadow */
+
+    --text-primary: #1A1A1A;
+    --text-secondary: #555555;
+
+    --card-bg: rgba(255, 255, 255, 0.5);
+    --card-hover-bg: rgba(255, 255, 255, 0.9);
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+
+    /* Vibrant Oranges */
+    --orange-primary: #FF7700;
+    --orange-light: #FF9F4F;
+    --orange-vibrant: #FF5500;
+
+    --transition-speed: 0.3s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Center strictly */
+    padding: 2rem;
+}
+
+/* Bright Liquid Background */
+.background-liquid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    background: radial-gradient(circle at center, #FFD8A8 0%, #FFB060 100%);
+    /* Final rich orange */
+}
+
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    /* Smooth dispersion */
+    opacity: 0.8;
+    animation: drift 15s infinite alternate ease-in-out;
+}
+
+.blob-1 {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--orange-light), transparent);
+    top: -10%;
+    left: -10%;
+}
+
+.blob-2 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, var(--orange-primary), transparent);
+    bottom: -10%;
+    right: -5%;
+    animation-delay: -5s;
+}
+
+.blob-3 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, var(--orange-vibrant), transparent);
+    top: 40%;
+    left: 40%;
+    opacity: 0.4;
+    animation-delay: -10s;
+}
+
+@keyframes drift {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(30px, 40px);
+    }
+}
+
+/* Main Glass Panel containing everything */
+.main-glass-panel {
+    background: var(--glass-panel-bg);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--glass-border);
+    border-radius: 32px;
+    padding: 3rem;
+    width: 100%;
+    max-width: 900px;
+    box-shadow: var(--glass-shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Section Styling */
+.link-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.section-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.section-divider {
+    height: 1px;
+    background: rgba(0, 0, 0, 0.05);
+    width: 100%;
+}
+
+/* Toggle Switch - Cleaner Design */
+.toggle-switch {
+    display: flex;
+    align-items: center;
+}
+
+.toggle-input {
+    display: none;
+}
+
+.toggle-label {
+    width: 42px;
+    height: 24px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.toggle-label::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.2s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-input:checked+.toggle-label {
+    background-color: var(--orange-primary);
+}
+
+.toggle-input:checked+.toggle-label::after {
+    transform: translateX(18px);
+}
+
+/* Grid for Chrome-style Icons */
+.links-chrome-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* Centers items horizontally */
+    gap: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.links-chrome-grid.hidden {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    margin: 0;
+    pointer-events: none;
+}
+
+/* Chrome Card Style */
+.chrome-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    gap: 0.75rem;
+    transition: transform 0.2s ease;
+}
+
+.chrome-card:hover {
+    transform: translateY(-2px);
+}
+
+.chrome-icon-box {
+    width: 64px;
+    /* Chrome styled size */
+    height: 64px;
+    background: var(--card-bg);
+    border-radius: 16px;
+    /* Rounded square */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.chrome-card:hover .chrome-icon-box {
+    background: var(--card-hover-bg);
+    box-shadow: 0 6px 15px rgba(255, 136, 0, 0.2);
+    /* Orange glow on hover */
+    border-color: #fff;
+}
+
+.app-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+.app-name {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 600px) {
+    .main-glass-panel {
+        padding: 1.5rem;
+        border-radius: 24px;
+    }
+
+    .links-chrome-grid {
+        grid-template-columns: repeat(3, 1fr);
+        /* 3 icons per row on mobile */
+        gap: 1rem;
+    }
+
+    .chrome-icon-box {
+        width: 56px;
+        height: 56px;
+    }
+
+    .app-icon {
+        width: 28px;
+        height: 28px;
+    }
+}
